@@ -25,13 +25,13 @@ pipeline {
         }
         stage('Prettier') {
             steps {
-                sh 'npm ci'
+                sh 'npm i'
                 sh 'npm run prettier-check'
             }
         }
         stage('ESLint') {
             steps {
-                sh 'npm ci'
+                sh 'npm i'
                 sh 'npm run eslint-check'
             }
         }
