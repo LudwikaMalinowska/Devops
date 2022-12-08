@@ -1,4 +1,3 @@
-const connect = require("connect")
 const express = require("express")
 const app = express()
 const cors = require("cors")
@@ -14,9 +13,9 @@ app.use("/books", books)
 
 require("dotenv").config()
 const dbConnData = {
-	host: process.env.MONGO_HOST || "127.0.0.1",
-	port: process.env.MONGO_PORT || 27017,
-	database: process.env.MONGO_DATABASE || "sem5_automatyzacja",
+	host: "127.0.0.1",
+	port: 27017,
+	database: "sem5_automatyzacja",
 }
 const mongoose = require("mongoose")
 
@@ -28,7 +27,7 @@ mongoose
 	})
 	.then((response) => {
 		console.log(`Connected to MongoDB. Database name: "${response.connections[0].name}"`)
-		const port = process.env.PORT || 5000
+		const port = 5000
 
 		app.listen(port, () => {
 			console.log(`API server listening at http://localhost:${port}`)
