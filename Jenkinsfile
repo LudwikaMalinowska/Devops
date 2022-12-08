@@ -25,15 +25,15 @@ pipeline {
         }
         stage('Prettier') {
             steps {
-                cd 'rest-api/server'
-                sh 'npm i'
+                sh 'cd rest-api/server'
+                sh 'npm i --prefix rest-api/server'
                 sh 'npm run prettier-check'
             }
         }
         stage('ESLint') {
             steps {
-                cd 'cd rest-api/server'
-                sh 'npm i'
+                sh 'cd rest-api/server'
+                sh 'npm i --prefix rest-api/server'
                 sh 'npm run eslint-check'
             }
         }
