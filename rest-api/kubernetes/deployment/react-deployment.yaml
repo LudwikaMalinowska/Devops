@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  labels:
+    app: myapp
+    type: frontend
+
+spec:
+  selector:
+    matchLabels:
+      type: frontend
+      instance: react
+      app: myapp
+  replicas: 2
+  template:
+    metadata:
+      name: react-pod
+      labels:
+        type: frontend
+        instance: react
+        app: myapp
+    spec:
+      containers:
+        - name: react-container
+          image: lmalinowska/automatyzacja-nginx:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 100m
+              memory: 100Mi
