@@ -14,18 +14,21 @@ app.use("/books", books)
 require("dotenv").config()
 const dbConnData = {
 	port: 5000,
-	mongo_host: '127.0.0.1',
+	mongo_host: "127.0.0.1",
 	mongo_port: 27017,
-	mongo_database: 'automatyzacja',
-  };
+	mongo_database: "automatyzacja",
+}
 const mongoose = require("mongoose")
 
 mongoose
-	.connect(`mongodb://${dbConnData.mongo_host}:${dbConnData.mongo_port}/${dbConnData.mongo_database}`, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-	})
+	.connect(
+		`mongodb://${dbConnData.mongo_host}:${dbConnData.mongo_port}/${dbConnData.mongo_database}`,
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useFindAndModify: false,
+		}
+	)
 	.then((response) => {
 		console.log(`Connected to MongoDB. Database name: "${response.connections[0].name}"`)
 
