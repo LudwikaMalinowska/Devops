@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: express-container
-          image: lmalinowska/automatyzacja-backend2:latest
+          image: lmalinowska/automatyzacja-server-ps:latest
           envFrom:
             - configMapRef:
                 name: express-configmap

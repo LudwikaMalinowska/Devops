@@ -2,27 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: mongo-deployment
+  name: postgres-deployment
   labels:
-    type: mongodb
+    type: postgres
     app: myapp
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      type: mongodb
+      type: postgres
       app: myapp
   template:
     metadata:
-      name: mongo-pod
+      name: postgres-pod
       labels:
-        type: mongodb
+        type: postgres
         app: myapp
     spec:
       containers:
-        - name: mongo-container
-          image: mongo:latest
+        - name: postgres-container
+          image: postgres:latest
           envFrom:
             - configMapRef:
-                name: mongo-configmap
+                name: postgres-configmap

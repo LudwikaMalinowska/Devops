@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo-clusterip
+  name: postgres-clusterip
   labels:
-    type: mongodb
+    type: postgres
     app: myapp
 spec:
   type: ClusterIP
   ports:
-    - port: 27017
-      targetPort: 27017
+    - port: 5432
+      targetPort: 5432
   selector:
-    type: mongodb
+    type: postgres
     app: myapp
