@@ -14,4 +14,4 @@ const client = new Client(dbConnData)
 console.log("Connection parameters: ")
 console.log(dbConnData)
 
-module.exports = client;
+module.exports = client

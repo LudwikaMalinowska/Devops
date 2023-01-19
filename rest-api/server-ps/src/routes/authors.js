@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-const client = require('../connection.js');
+const client = require("../connection.js")
 const express = require("express")
 const app = express.Router()
 
@@ -31,7 +31,6 @@ app.post("/", async (req, res) => {
 	})
 })
 
-
 app.get("/:authorSurname", async (req, res) => {
 	let surname = req.params.surname
 	const query = {
@@ -48,7 +47,6 @@ app.get("/:authorSurname", async (req, res) => {
 	})
 })
 
-
 app.delete("/:id", async (req, res) => {
 	let id = req.params.id
 	const query = {
@@ -64,7 +62,6 @@ app.delete("/:id", async (req, res) => {
 		})
 	})
 })
-
 
 app.put("/:id", async (req, res) => {
 	let id = req.params.id

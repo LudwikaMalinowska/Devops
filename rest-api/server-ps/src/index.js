@@ -12,7 +12,7 @@ const books = require("./routes/books")
 app.use("/authors", authors)
 app.use("/books", books)
 
-const client = require('./connection.js');
+const client = require("./connection.js")
 
 client
 	.connect()
