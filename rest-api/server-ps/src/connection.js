@@ -5,7 +5,7 @@ const dbConnData = {
 	port: process.env.PG_PORT || 5432,
 	database: process.env.PG_DATABASE || "postgres",
 	user: process.env.PG_USER || "postgres",
-	password: process.env.PG_PASSWORD,
+	password: process.env.PG_PASSWORD || "postgres",
 }
 
 const { Client } = require("pg")

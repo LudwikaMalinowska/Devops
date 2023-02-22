@@ -12,7 +12,7 @@ app.get("/", async (req, res) => {
 		//console.log(error, result);
 		if (error) throw error
 		return res.send({
-			allAuthors: [result.rows],
+			allAuthors: result.rows,
 		})
 	})
 })
@@ -26,8 +26,22 @@ app.post("/", async (req, res) => {
 		values: [req.body.name, req.body.surname, req.body.dateOfBirth, req.body.writtenBooks],
 	}
 	client.query(query, (error, result) => {
-		if (error) throw error
+		if (error) console.log(error)
 		return res.send(message)
+	})
+})
+
+app.get("/:id", async (req, res) => {
+	let id = req.params.id
+	const query = {
+		name: "get-author",
+		text: "SELECT * FROM author where id = $1;",
+		values: [id],
+	}
+
+	client.query(query, (error, result) => {
+		if (error) console.log(error);
+		return res.send(result.rows[0]);
 	})
 })
 

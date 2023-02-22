@@ -1,0 +1,7 @@
+<li>
+    <p>{{book?.title}}</p>
+    <p>{{book?.authorid}}</p>
+    <p>{{book?.publicationdate}}</p>
+    <p>{{author?.name}} {{author?.surname}}</p>
+    <button [routerLink]="['/books', book?.id]">Details</button>
+</li>

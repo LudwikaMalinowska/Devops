@@ -12,7 +12,7 @@ app.get("/", async (req, res) => {
 		//console.log(error, result);
 		if (error) throw error
 		return res.send({
-			allBooks: [result.rows],
+			allBooks: result.rows,
 		})
 	})
 })
@@ -23,11 +23,27 @@ app.post("/", async (req, res) => {
 	}
 	const query = {
 		text: "INSERT INTO book (title, authorId, publicationDate) VALUES ($1,$2,$3);",
-		values: [req.body.name, req.body.authorId, req.body.publicationDate],
+		values: [req.body.title, req.body.authorId, req.body.publicationDate],
 	}
 	client.query(query, (error, result) => {
-		if (error) throw error
+		if (error) console.log(error)
 		return res.send(message)
+	})
+})
+
+app.get("/:id", async (req, res) => {
+	let id = req.params.id
+	const query = {
+		name: "get-book",
+		text: "SELECT * FROM book where id = $1;",
+		values: [id],
+	}
+
+	client.query(query, (error, result) => {
+		if (error) throw error
+		return res.send(
+			result.rows[0],
+		)
 	})
 })
 

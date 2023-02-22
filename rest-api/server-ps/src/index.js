@@ -9,8 +9,8 @@ app.use(express.json())
 const authors = require("./routes/authors")
 const books = require("./routes/books")
 
-app.use("/authors", authors)
-app.use("/books", books)
+app.use("/api/authors", authors)
+app.use("/api/books", books)
 
 const client = require("./connection.js")
 
