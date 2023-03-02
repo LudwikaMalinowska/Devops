@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Observable } from 'rxjs';
 // import { books } from 'src/app/interfaces/data';
 import { Book, Author } from 'src/app/interfaces/interfaces';
@@ -20,12 +20,15 @@ export class AuthorPageComponent {
   author: Author | undefined;
   state: any;
 
-  constructor(private http: HttpClient, private router:Router) {
+  constructor(private http: HttpClient, private router:Router, private activatedRoute:ActivatedRoute) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
   }
 
   ngOnInit(): void {
-    console.log(this.state)
+    let authorId = 0;
+    this.activatedRoute.params.subscribe(params => {
+      authorId = params['id'];
+    })
     const req2: Observable<BookResponse> = this.http.get<BookResponse>("http://localhost:5000/api/books")
     req2.subscribe((val: BookResponse) => {
       console.log(val)
@@ -33,20 +36,20 @@ export class AuthorPageComponent {
         this.books = val.allBooks;
       }
 
-      if (this.state.author){
+      if (this.state && this.state.author){
         this.author = this.state.author;
         this.authorBooks = this.parseWrittenBooks(this.state.author.writtenBooks)
         return;
       }
-  
-      const req: Observable<Author> = this.http.get<Author>("http://localhost:5000/api/authors/1")
-      
+
+      const req: Observable<Author> = this.http.get<Author>("http://localhost:5000/api/authors/" + authorId)
+
       req.subscribe((val: Author) => {
         this.author = val;
         this.authorBooks = this.parseWrittenBooks(val.writtenBooks)
       });
     });
-    
+
 
 
   }

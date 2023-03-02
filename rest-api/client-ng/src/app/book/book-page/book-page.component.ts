@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book, Author } from '../../interfaces/interfaces';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -15,19 +15,22 @@ export class BookPageComponent {
   author: Author | undefined;
   state: any;
 
-  constructor(private http: HttpClient, private router:Router) {
+  constructor(private http: HttpClient, private router:Router, private activatedRoute:ActivatedRoute) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
   }
 
   ngOnInit(): void {
-    console.log(this.state)
-    if (this.state.author && this.state.book){
+    let bookId = 0;
+    this.activatedRoute.params.subscribe(params => {
+      bookId = params['id'];
+    })
+    if (this.state && this.state.author && this.state.book){
       this.author = this.state.author;
       this.book = this.state.book;
       return;
     }
 
-    const req: Observable<Book> = this.http.get<Book>("http://localhost:5000/api/books/3")
+    const req: Observable<Book> = this.http.get<Book>("http://localhost:5000/api/books/" + bookId )
     req.subscribe((val: Book) => {
       this.book = val;
       const req2: Observable<Author> = this.http
