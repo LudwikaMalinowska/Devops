@@ -24,7 +24,7 @@ client
 			name VARCHAR(60) NOT NULL,
 			surname VARCHAR(60) NOT NULL,
 			dateOfBirth DATE NOT NULL,
-			writtenBooks VARCHAR(1000) NOT NULL 
+			writtenBooks VARCHAR(1000) NOT NULL
 		  );
 
 		  
@@ -33,7 +33,8 @@ client
 			title VARCHAR UNIQUE NOT NULL,
 			authorId INTEGER NULL, 
 			FOREIGN KEY (authorId) REFERENCES author (id),
-			publicationDate DATE NOT NULL
+			publicationDate DATE NOT NULL,
+			book_cover VARCHAR(1000) NOT NULL
 		  );
 		  `);
 
