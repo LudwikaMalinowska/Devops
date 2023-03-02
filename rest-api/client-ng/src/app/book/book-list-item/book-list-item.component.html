@@ -1,7 +1,13 @@
 <li>
+    <a [routerLink]="['/books', book?.id]" [state]="{book: book, 
+        author: author}">
+    <div class="img">
+        <img src={{book?.book_cover}} alt={{book?.title}}/>
+    </div>
     <p>{{book?.title}}</p>
-    <p>{{book?.authorid}}</p>
-    <p>{{book?.publicationdate}}</p>
+    <!-- <p>{{book?.authorid}}</p> -->
+    <!-- <p>{{book?.publicationdate}}</p> -->
     <p>{{author?.name}} {{author?.surname}}</p>
-    <button [routerLink]="['/books', book?.id]">Details</button>
+    <!-- <button [routerLink]="['/books', book?.id]">Details</button> -->
+    </a>
 </li>

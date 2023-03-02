@@ -1,0 +1,193 @@
+.nav {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 0;
+  background-color: var(--gray-8);
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 3%;
+  box-shadow: 3px 3px 5px lightgray;
+  font-family: "Lato", "sans-serif";
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+.nav i {
+  color: #4d55a3;
+  font-size: 16px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  margin: 0;
+  background-color: #e0e0e0;
+}
+
+html {
+  min-height: 100%;
+}
+
+:root {
+  --primary-color-0: black;
+  --primary-color-1: #1a1d37;
+  --primary-color-2: #343a6f;
+  --primary-color-3: #4d55a3;
+  --primary-color-4: #7178bc;
+  --primary-color-5: #9399cc;
+  --primary-color-6: #babdde;
+  --primary-color-7: #dcdeef;
+  --primary-color-8: white;
+  --purple-0: black;
+  --purple-1: #231834;
+  --purple-2: #473168;
+  --purple-3: #6a499c;
+  --purple-4: #896ab9;
+  --purple-5: #a890cb;
+  --purple-6: #c6b6dd;
+  --purple-7: #e1d9ed;
+  --purple-8: white;
+  --secondary-color-0: black;
+  --secondary-color-1: #2b152d;
+  --secondary-color-2: #552a5a;
+  --secondary-color-3: #804087;
+  --secondary-color-4: #a655af;
+  --secondary-color-5: #be82c4;
+  --secondary-color-6: #d3acd8;
+  --secondary-color-7: #e9d5eb;
+  --secondary-color-8: white;
+  --blue-0: black;
+  --blue-1: #1a1d37;
+  --blue-2: #343a6f;
+  --blue-3: #4d55a3;
+  --blue-4: #7178bc;
+  --blue-5: #9399cc;
+  --blue-6: #babdde;
+  --blue-7: #dcdeef;
+  --blue-8: white;
+  --purple-0: black;
+  --purple-1: #231834;
+  --purple-2: #473168;
+  --purple-3: #6a499c;
+  --purple-4: #896ab9;
+  --purple-5: #a890cb;
+  --purple-6: #c6b6dd;
+  --purple-7: #e1d9ed;
+  --purple-8: white;
+  --magenta-0: black;
+  --magenta-1: #2b152d;
+  --magenta-2: #552a5a;
+  --magenta-3: #804087;
+  --magenta-4: #a655af;
+  --magenta-5: #be82c4;
+  --magenta-6: #d3acd8;
+  --magenta-7: #e9d5eb;
+  --magenta-8: white;
+  --pink-0: black;
+  --pink-1: #2d1524;
+  --pink-2: #5a2a47;
+  --pink-3: #87406b;
+  --pink-4: #b1598d;
+  --pink-5: #c686ac;
+  --pink-6: #d9afc9;
+  --pink-7: #edd9e5;
+  --pink-8: white;
+  --red-0: black;
+  --red-1: #311719;
+  --red-2: #5e2c31;
+  --red-3: #8e434a;
+  --red-4: #b45f68;
+  --red-5: #c8898f;
+  --red-6: #dbb3b7;
+  --red-7: #edd9db;
+  --red-8: white;
+  --orange-0: black;
+  --orange-1: #2a1c14;
+  --orange-2: #533927;
+  --orange-3: #7d553b;
+  --orange-4: #a6724e;
+  --orange-5: #bf9478;
+  --orange-6: #d5b8a5;
+  --orange-7: #eadbd2;
+  --orange-8: white;
+  --yellow-0: black;
+  --yellow-1: #232110;
+  --yellow-2: #454221;
+  --yellow-3: #686331;
+  --yellow-4: #8b8341;
+  --yellow-5: #ada452;
+  --yellow-6: #c9c38d;
+  --yellow-7: #e5e2c8;
+  --yellow-8: white;
+  --lime-0: black;
+  --lime-1: #1b2310;
+  --lime-2: #394922;
+  --lime-3: #556c33;
+  --lime-4: #708e43;
+  --lime-5: #8db159;
+  --lime-6: #b6cc93;
+  --lime-7: #d9e5c8;
+  --lime-8: white;
+  --green-0: black;
+  --green-1: #142612;
+  --green-2: #284c24;
+  --green-3: #3c7236;
+  --green-4: #509948;
+  --green-5: #72b96a;
+  --green-6: #a3d19e;
+  --green-7: #d1e8ce;
+  --green-8: white;
+  --turquoise-0: black;
+  --turquoise-1: #12261a;
+  --turquoise-2: #244c34;
+  --turquoise-3: #36724e;
+  --turquoise-4: #489968;
+  --turquoise-5: #6ab989;
+  --turquoise-6: #9ed1b2;
+  --turquoise-7: #cee8d9;
+  --turquoise-8: white;
+  --cyan-0: black;
+  --cyan-1: #122624;
+  --cyan-2: #224945;
+  --cyan-3: #346f69;
+  --cyan-4: #45928a;
+  --cyan-5: #5fb4ab;
+  --cyan-6: #97cec9;
+  --cyan-7: #cbe7e4;
+  --cyan-8: white;
+  --azure-0: black;
+  --azure-1: #15242d;
+  --azure-2: #294457;
+  --azure-3: #3c6580;
+  --azure-4: #5289ad;
+  --azure-5: #7fa7c3;
+  --azure-6: #a8c4d6;
+  --azure-7: #d5e3eb;
+  --azure-8: white;
+  --gray-0: black;
+  --gray-1: #1f1f1f;
+  --gray-2: #404040;
+  --gray-3: #5e5e5e;
+  --gray-4: gray;
+  --gray-5: #a1a1a1;
+  --gray-6: #bfbfbf;
+  --gray-7: #e0e0e0;
+  --gray-8: white;
+}

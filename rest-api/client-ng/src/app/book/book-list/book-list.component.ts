@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book, Author } from '../../interfaces/interfaces';
+import { books, authors } from 'src/app/interfaces/data';
 import { Observable } from 'rxjs';
+
 
 interface Response {
   allBooks: Book[]
@@ -14,7 +16,8 @@ interface Response {
 })
 export class BookListComponent {
 
-  books: Book[] = []
+  //books: Book[] = []
+  books: Book[] = books;
 
   constructor(private http: HttpClient) {}
 

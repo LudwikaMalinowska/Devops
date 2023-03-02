@@ -1,1 +1,6 @@
-<p>author-list-item works!</p>
+<li>
+    <a [routerLink]="['/authors', author?.id]" 
+    [state]="{author: author}">
+        <p>{{author?.name}} {{author?.surname}}</p>
+    </a>
+</li>

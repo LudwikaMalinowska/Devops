@@ -2,7 +2,8 @@ export interface Book {
     id: number,
     title: string,
     authorid: number,
-    publicationdate: string
+    publicationdate: string,
+    book_cover: string
   }
   
   export interface Author {

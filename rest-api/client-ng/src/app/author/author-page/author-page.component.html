@@ -1,1 +1,14 @@
-<p>author-page works!</p>
+<div class="author-page">
+    <p>{{author?.name}} {{author?.surname}}</p>
+    <p>Id: {{author?.id}}</p>
+    <p>Date of birth: {{author?.dateOfBirth}}</p>
+    <p>Written books: </p>
+    <ul>
+        <a *ngFor="let book of authorBooks"
+            [routerLink]="['/books', book?.id]" 
+            [state]="{book: book, author: author}"
+        >
+            <p>{{book?.title}}</p>   
+        </a>
+    </ul>
+</div>

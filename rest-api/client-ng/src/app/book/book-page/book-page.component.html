@@ -1,6 +1,12 @@
-<div>
-    <p>{{book?.title}}</p>
-    <p>{{book?.authorid}}</p>
-    <p>{{book?.publicationdate}}</p>
-    <p>{{author?.name}} {{author?.surname}}</p>
+<div class="movie-page">
+    <div class="img">
+        <img src={{book?.book_cover}} alt={{book?.title}}/>
+    </div>
+    <p>Title: {{book?.title}}</p>
+    <p>Id: {{book?.id}}</p>
+    <p>Publication date: {{book?.publicationdate}}</p>
+    <p>Author: 
+        <a [routerLink]="['/authors', author?.id]" 
+        [state]="{author: author}">{{author?.name}} {{author?.surname}}</a>
+    </p>
 </div>
