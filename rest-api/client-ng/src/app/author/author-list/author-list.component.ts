@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book, Author } from '../../interfaces/interfaces';
-import { books, authors } from 'src/app/interfaces/data';
+// import { books, authors } from 'src/app/interfaces/data';
 import { Observable } from 'rxjs';
 
 interface Response {
@@ -14,8 +14,8 @@ interface Response {
   styleUrls: ['./author-list.component.scss']
 })
 export class AuthorListComponent {
-  // authors: Author[] = []
-  authors: Author[] = authors;
+  authors: Author[] = []
+  // authors: Author[] = authors;
 
 
   constructor(private http: HttpClient) {}

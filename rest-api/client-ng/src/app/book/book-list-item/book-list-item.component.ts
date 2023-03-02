@@ -3,7 +3,7 @@ import { Book, Author, AuthorResponse } from '../../interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { authors } from 'src/app/interfaces/data';
+// import { authors } from 'src/app/interfaces/data';
 
 @Component({
   selector: 'app-book-list-item',
@@ -13,8 +13,8 @@ import { authors } from 'src/app/interfaces/data';
 export class BookListItemComponent {
   @Input() book: Book | undefined;
 
-  //authors: Author[] = []
-  authors: Author[] = authors;
+  authors: Author[] = []
+  // authors: Author[] = authors;
 
   author: Author | undefined = undefined;
 
@@ -30,11 +30,12 @@ export class BookListItemComponent {
     req.subscribe((val: AuthorResponse) => {
 
       if (val.allAuthors.length > 0) {
-        // this.authors = val.allAuthors;
-        // this.author = this.authors.find(author => author.id == this.book?.authorid);
+        this.authors = val.allAuthors;
+        this.author = this.authors.find(author => author.id == this.book?.authorid);
       }
+      
     })
     
-    this.author = this.authors.find(author => author.id == this.book?.authorid);
+    // this.author = this.authors.find(author => author.id == this.book?.authorid);
   }
 }

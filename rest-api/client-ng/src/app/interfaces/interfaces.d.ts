@@ -10,7 +10,7 @@ export interface Book {
     id: number,
     name: String,
     surname: String,
-    dateOfBirth: String,
+    dateofbirth: String,
     writtenBooks: String
   }
 

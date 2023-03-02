@@ -1,7 +1,7 @@
 <div class="author-page">
     <p>{{author?.name}} {{author?.surname}}</p>
     <p>Id: {{author?.id}}</p>
-    <p>Date of birth: {{author?.dateOfBirth}}</p>
+    <p>Date of birth: {{this.parseDate(author?.dateofbirth)}}</p>
     <p>Written books: </p>
     <ul>
         <a *ngFor="let book of authorBooks"

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Book, Author } from '../../interfaces/interfaces';
-import { books, authors } from 'src/app/interfaces/data';
+// import { books, authors } from 'src/app/interfaces/data';
 import { Observable } from 'rxjs';
 
 
@@ -16,18 +16,20 @@ interface Response {
 })
 export class BookListComponent {
 
-  //books: Book[] = []
-  books: Book[] = books;
+  books: Book[] = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     const req: Observable<Response> = this.http.get<Response>("http://localhost:5000/api/books")
     req.subscribe((val: Response) => {
-      console.log(val.allBooks)
+      console.log(val)
       if (val.allBooks.length > 0) {
         this.books = val.allBooks;
       }
+      // else {
+      //   this.books = books;
+      // }
       
     });
   }
