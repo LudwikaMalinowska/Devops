@@ -22,7 +22,7 @@ app.post("/", async (req, res) => {
 		toInsert: req.body,
 	}
 	const query = {
-		text: "INSERT INTO book (title, authorId, publicationDate) VALUES ($1,$2,$3,$4);",
+		text: "INSERT INTO book (title, authorId, publicationDate, book_cover) VALUES ($1,$2,$3,$4);",
 		values: [req.body.title, req.body.authorId, req.body.publicationDate, req.body.book_cover],
 	}
 	client.query(query, (error, result) => {

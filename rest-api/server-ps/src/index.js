@@ -27,7 +27,6 @@ client
 			writtenBooks VARCHAR(1000) NOT NULL
 		  );
 
-		  
 		  CREATE TABLE IF NOT EXISTS book (
 			id SERIAL PRIMARY KEY,
 			title VARCHAR UNIQUE NOT NULL,
