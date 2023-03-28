@@ -8,9 +8,11 @@ app.use(express.json())
 
 const authors = require("./routes/authors")
 const books = require("./routes/books")
+const people = require("./routes/people")
 
 app.use("/api/authors", authors)
 app.use("/api/books", books)
+app.use("/api/people", people)
 
 const client = require("./connection.js")
 
@@ -19,7 +21,14 @@ client
 	.then(() => {
 		console.log("Connected to PostgreSQL")
 
-		client.query(`CREATE TABLE IF NOT EXISTS author (
+		client.query(`CREATE TABLE IF NOT EXISTS person (
+			id SERIAL PRIMARY KEY,
+			name VARCHAR(60) NOT NULL,
+			surname VARCHAR(60) NOT NULL,
+			dateOfBirth DATE NOT NULL
+		  );
+		
+		  CREATE TABLE IF NOT EXISTS author (
 			id SERIAL PRIMARY KEY,
 			name VARCHAR(60) NOT NULL,
 			surname VARCHAR(60) NOT NULL,

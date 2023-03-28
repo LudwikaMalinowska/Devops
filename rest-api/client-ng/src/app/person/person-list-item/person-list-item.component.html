@@ -1,0 +1,6 @@
+<li>
+    <a [routerLink]="['/people', person?.id]" 
+    [state]="{person: person}">
+        <p>{{person?.name}} {{person?.surname}}</p>
+    </a>
+</li>

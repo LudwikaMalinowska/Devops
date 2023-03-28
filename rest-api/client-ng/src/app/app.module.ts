@@ -11,6 +11,9 @@ import { AuthorListItemComponent } from './author/author-list-item/author-list-i
 import { AuthorPageComponent } from './author/author-page/author-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PersonListComponent } from './person/person-list/person-list.component';
+import { PersonListItemComponent } from './person/person-list-item/person-list-item.component';
+import { PersonPageComponent } from './person/person-page/person-page.component';
 // import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -21,7 +24,10 @@ import { FormsModule } from '@angular/forms';
     BookPageComponent,
     AuthorListComponent,
     AuthorListItemComponent,
-    AuthorPageComponent
+    AuthorPageComponent,
+    PersonListComponent,
+    PersonListItemComponent,
+    PersonPageComponent
   ],
   imports: [
     BrowserModule,

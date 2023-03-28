@@ -14,6 +14,13 @@ export interface Book {
     writtenBooks: String
   }
 
+  export interface Person {
+    id: number,
+    name: String,
+    surname: String,
+    dateofbirth: String,
+  }
+
   export interface AuthorResponse {
     allAuthors: Author[]
   }
