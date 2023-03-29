@@ -8,17 +8,17 @@ export interface Book {
   
   export interface Author {
     id: number,
-    name: String,
-    surname: String,
-    dateofbirth: String,
-    writtenBooks: String
+    name: string,
+    surname: string,
+    dateofbirth: string,
+    writtenBooks: string
   }
 
   export interface Person {
     id: number,
-    name: String,
-    surname: String,
-    dateofbirth: String,
+    name: string,
+    surname: string,
+    dateofbirth: string,
   }
 
   export interface AuthorResponse {

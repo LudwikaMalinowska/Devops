@@ -5,6 +5,7 @@ import { AuthorListComponent } from './author/author-list/author-list.component'
 import { AuthorPageComponent } from './author/author-page/author-page.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookPageComponent } from './book/book-page/book-page.component';
+import { PersonFormComponent } from './person/person-form/person-form.component';
 import { PersonListComponent } from './person/person-list/person-list.component';
 import { PersonPageComponent } from './person/person-page/person-page.component';
 
@@ -14,7 +15,11 @@ const routes: Routes = [
   { path: 'authors', component: AuthorListComponent },
   { path: 'authors/:id', component: AuthorPageComponent},
   { path: 'people', component: PersonListComponent },
+  { path: 'people/add', component: PersonFormComponent},
+
   { path: 'people/:id', component: PersonPageComponent},
+  { path: 'people/:id/edit', component: PersonFormComponent},
+
   { path:'home', component: AppComponent},
 ];
 

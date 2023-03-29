@@ -10,10 +10,11 @@ import { AuthorListComponent } from './author/author-list/author-list.component'
 import { AuthorListItemComponent } from './author/author-list-item/author-list-item.component';
 import { AuthorPageComponent } from './author/author-page/author-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonListComponent } from './person/person-list/person-list.component';
 import { PersonListItemComponent } from './person/person-list-item/person-list-item.component';
 import { PersonPageComponent } from './person/person-page/person-page.component';
+import { PersonFormComponent } from './person/person-form/person-form.component';
 // import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -27,13 +28,15 @@ import { PersonPageComponent } from './person/person-page/person-page.component'
     AuthorPageComponent,
     PersonListComponent,
     PersonListItemComponent,
-    PersonPageComponent
+    PersonPageComponent,
+    PersonFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

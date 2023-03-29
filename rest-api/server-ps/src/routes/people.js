@@ -23,7 +23,7 @@ app.post("/", async (req, res) => {
 	}
 	const query = {
 		text: "INSERT INTO person (name, surname, dateOfBirth) VALUES ($1, $2, $3);",
-		values: [req.body.name, req.body.surname, req.body.dateOfBirth],
+		values: [req.body.name, req.body.surname, req.body.dateofbirth],
 	}
 	client.query(query, (error, result) => {
 		if (error) console.log(error)
@@ -85,7 +85,7 @@ app.put("/:id", async (req, res) => {
 		text: `UPDATE person SET name=$2, surname=$3,
       dateOfBirth=$4
       WHERE id = $1`,
-		values: [id, data.name, data.surname, data.dateOfBirth],
+		values: [id, data.name, data.surname, data.dateofbirth],
 	}
 	client.query(query, (error, response) => {
 		return res.send({
