@@ -28,25 +28,39 @@ export class PersonFormComponent {
       });
     }
   
-  private initForm() {
+  private async initForm() {
     let personName = "";
     let personSurname = "";
-    let personDate = "01-01-1990";
+    let personDate = "1990-02-02";
 
-    if (this.editMode) {
-      const person: Person = this.personService.getPerson(this.id);
-      console.log(person);
-      
+    if(!this.editMode){
+      this.personForm = new FormGroup({
+        'name': new FormControl(personName, Validators.required),
+        'surname': new FormControl(personSurname, Validators.required),
+        'dateofbirth': new FormControl(personDate.slice(0,10), Validators.required),
+      })
+
+      return;
+    }
+
+    let person: Person;
+    const req = this.personService.getPerson(this.id);
+    await req.subscribe((data: Person) => {
+      person = data;
+
+      console.log("personn", person);
+    
       personName = person.name;
       personSurname = person.surname;
       personDate = person.dateofbirth;
-    }
 
-    this.personForm = new FormGroup({
-      'name': new FormControl(personName, Validators.required),
-      'surname': new FormControl(personSurname, Validators.required),
-      'dateofbirth': new FormControl(personDate, Validators.required),
+      this.personForm = new FormGroup({
+        'name': new FormControl(personName, Validators.required),
+        'surname': new FormControl(personSurname, Validators.required),
+        'dateofbirth': new FormControl(personDate.slice(0,10), Validators.required),
+      })
     })
+
   }
 
   onSubmit(){

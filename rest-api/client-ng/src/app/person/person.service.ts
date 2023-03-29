@@ -13,15 +13,25 @@ interface PersonResponse {
 export class PersonService {
   constructor(private http: HttpClient) {}
 
-  getPerson(personId: number): Person{
-    const mockPerson = {
-      id: 0,
-      name: "",
-      surname: "",
-      dateofbirth: "01-01-1970"
-    }
+  getPerson(personId: number): Observable<Person>{
+    // const mockPerson = {
+    //   id: -1,
+    //   name: "mm",
+    //   surname: "mock",
+    //   dateofbirth: "1990-01-01"
+    // }
 
-    return mockPerson;
+    let response: Person;
+    const req: Observable<Person> = this.http.get<Person>("http://localhost:5000/api/people/"+personId)
+
+    // req.subscribe((val: Person) => response = {
+    //   id: val.id,
+    //   name: val.name,
+    //   surname: val.surname,
+    //   dateofbirth: val.dateofbirth
+    // })
+
+    return req;
   }
 
   private persons: Person[] = [];

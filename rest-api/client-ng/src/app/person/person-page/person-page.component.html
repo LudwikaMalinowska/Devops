@@ -3,3 +3,9 @@
     <p>Id: {{person?.id}}</p>
     <p>Date of birth: {{this.parseDate(person?.dateofbirth)}}</p>
 </div>
+
+<a *ngIf="person?.id" [routerLink]="['/people', person?.id,  'edit']">
+    <button>
+        Edit Person
+    </button>
+</a>
