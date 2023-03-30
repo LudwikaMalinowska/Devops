@@ -31,14 +31,14 @@ export class BookFormComponent {
   private async initForm() {
     let bookTitle = "";
     let bookAuthorId = -1;
-    let bookDate = "1990-02-02";
+    let bookDate = "2022-02-02";
     let bookCover = "";
 
     if(!this.editMode){
       this.bookForm = new FormGroup({
         'title': new FormControl(bookTitle, Validators.required),
         'authorId': new FormControl(bookAuthorId, Validators.required),
-        'publicationDate': new FormControl(bookDate.slice(0,10), Validators.required),
+        'publicationdate': new FormControl(bookDate.slice(0,10), Validators.required),
         'book_cover': new FormControl(bookCover),
       })
 
@@ -50,17 +50,17 @@ export class BookFormComponent {
     await req.subscribe((data: Book) => {
       book = data;
 
-      console.log("bookn", book);
+      console.log("booknnnn", book);
     
       bookTitle = book.title;
       bookAuthorId = book.authorid;
-      bookDate = book.publicationDate;
+      bookDate = book.publicationdate;
       bookCover = book.book_cover;
 
       this.bookForm = new FormGroup({
         'title': new FormControl(bookTitle, Validators.required),
         'authorId': new FormControl(bookAuthorId, Validators.required),
-        'publicationDate': new FormControl(bookDate.slice(0,10), Validators.required),
+        'publicationdate': new FormControl(bookDate.slice(0,10), Validators.required),
         'book_cover': new FormControl(bookCover),
       })
     })

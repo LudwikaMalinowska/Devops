@@ -2,7 +2,7 @@ export interface Book {
     id: number,
     title: string,
     authorid: number,
-    publicationDate: string,
+    publicationdate: string,
     book_cover: string
   }
   
