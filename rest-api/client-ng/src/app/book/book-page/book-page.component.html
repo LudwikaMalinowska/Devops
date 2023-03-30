@@ -4,9 +4,15 @@
     </div>
     <p>Title: {{book?.title}}</p>
     <p>Id: {{book?.id}}</p>
-    <p>Publication date: {{book?.publicationdate}}</p>
+    <p>Publication date: {{book?.publicationDate}}</p>
     <p>Author: 
         <a [routerLink]="['/authors', author?.id]" 
         [state]="{author: author}">{{author?.name}} {{author?.surname}}</a>
     </p>
 </div>
+
+<a *ngIf="book?.id" [routerLink]="['/books', book?.id,  'edit']">
+    <button>
+        Edit Book
+    </button>
+</a>

@@ -15,6 +15,7 @@ import { PersonListComponent } from './person/person-list/person-list.component'
 import { PersonListItemComponent } from './person/person-list-item/person-list-item.component';
 import { PersonPageComponent } from './person/person-page/person-page.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
 // import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -29,7 +30,8 @@ import { PersonFormComponent } from './person/person-form/person-form.component'
     PersonListComponent,
     PersonListItemComponent,
     PersonPageComponent,
-    PersonFormComponent
+    PersonFormComponent,
+    BookFormComponent
   ],
   imports: [
     BrowserModule,

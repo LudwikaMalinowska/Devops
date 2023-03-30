@@ -1,3 +1,8 @@
+<a [routerLink]="['/books', 'add']">
+    <button>
+        Add Book
+    </button>
+</a>
 <ul>
     <app-book-list-item *ngFor="let book of books" [book]="book"></app-book-list-item>
 </ul>
