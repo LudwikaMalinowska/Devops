@@ -3,6 +3,17 @@
         Add Book
     </button>
 </a>
+
+<div>
+    <div [formGroup]="sortForm">
+        <label for="sort_type">Sort: </label>
+        <select formControlName="sort_type" name="sort_type" id="sort_type" (change)="changeSortType()">
+            <option value="sort_ascending_title">Ascending - title</option>
+            <option value="sort_descending_title">Descending - title</option>
+        </select>
+    </div>
+</div>
+
 <ul>
     <app-book-list-item *ngFor="let book of books" [book]="book"></app-book-list-item>
 </ul>
