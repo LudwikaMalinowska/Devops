@@ -4,6 +4,18 @@
     </button>
 </a>
 
+<div>
+    <div [formGroup]="sortForm">
+        <label for="sort_type">Sort: </label>
+        <select formControlName="sort_type" name="sort_type" id="sort_type" (change)="changeSortType()">
+            <option value="sort_ascending_name">Ascending - name</option>
+            <option value="sort_descending_name">Descending - name</option>
+            <option value="sort_ascending_surname">Ascending - surname</option>
+            <option value="sort_descending_surname">Descending - surname</option>
+        </select>
+    </div>
+</div>
+
 <ul>
     <app-person-list-item *ngFor="let person of people" [person]="person"></app-person-list-item>
 </ul>

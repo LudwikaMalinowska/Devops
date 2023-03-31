@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Person } from 'src/app/interfaces/interfaces';
 
@@ -14,12 +15,14 @@ interface Response {
 })
 export class PersonListComponent {
   people: Person[] = []
-  // authors: Author[] = authors;
+  sortForm!: FormGroup;
 
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    let sort_type = "";
+
     const req: Observable<Response> = this.http.get<Response>("http://localhost:5000/api/people")
     req.subscribe((val: Response) => {
       console.log(val.allPeople);
@@ -27,6 +30,30 @@ export class PersonListComponent {
         this.people = val.allPeople;
       }
     })
+
+    this.sortForm = new FormGroup({
+      'sort_type': new FormControl(sort_type),
+    })
+    
+  }
+
+  changeSortType(){
+    const sort_type = this.sortForm.value['sort_type'];
+
+    switch(sort_type){
+      case "sort_ascending_name":
+        this.people.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "sort_descending_name":
+        this.people.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case "sort_ascending_surname":
+        this.people.sort((a, b) => a.surname.localeCompare(b.surname));
+        break;
+      case "sort_descending_surname":
+        this.people.sort((a, b) => b.surname.localeCompare(a.surname));
+        break;
+    }
     
   }
 }
