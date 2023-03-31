@@ -47,7 +47,7 @@ export class BookService {
 
 
   addBook(book: Book) {
-    console.log("book", book)
+    console.log("book -service", book)
     const req: Observable<BookResponse> = this.http.post<BookResponse>("http://localhost:5000/api/books", book)
 
     req.subscribe((val) => {

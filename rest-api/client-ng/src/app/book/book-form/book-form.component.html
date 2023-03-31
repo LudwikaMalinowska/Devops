@@ -8,12 +8,16 @@
         class="form-control">
     </div>
     <div class="form-group">
-        <label for="authorId">Author id: </label>
+        <!-- <label for="authorId">Author id: </label>
         <input 
         type="number" 
         id="authorId" 
         formControlName="authorId"
-        class="form-control">
+        class="form-control"> -->
+        <label for="authorid">Author: </label>
+        <select formControlName="authorid" name="authorid" id="authorid">
+            <option *ngFor="let person of people" [ngValue]="person.id">{{person.name}} {{person.surname}}</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="publicationdate">Publication date:</label>

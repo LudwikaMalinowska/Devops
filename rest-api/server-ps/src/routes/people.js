@@ -33,6 +33,7 @@ app.post("/", async (req, res) => {
 
 app.get("/:id", async (req, res) => {
 	let id = req.params.id
+	console.log("person id", id)
 	const query = {
 		name: "get-person",
 		text: "SELECT * FROM person where id = $1;",
@@ -41,7 +42,9 @@ app.get("/:id", async (req, res) => {
 
 	client.query(query, (error, result) => {
 		if (error) console.log(error);
-		return res.send(result.rows[0]);
+		if (result)
+			return res.send(result.rows[0]);
+		console.log("res", result)
 	})
 })
 
@@ -69,7 +72,10 @@ app.delete("/:id", async (req, res) => {
 		values: [id],
 	}
 	client.query(query, (error, result) => {
-		if (error) throw error
+		if (error) return res.send({
+			err: error.message,
+			detail: error.detail,
+		})
 		return res.send({
 			deletedperson: result.rows,
 			// deletedpersonId: id

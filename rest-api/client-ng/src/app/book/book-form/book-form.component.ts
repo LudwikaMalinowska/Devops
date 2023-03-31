@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Book } from 'src/app/interfaces/interfaces';
+import { Book, Person } from 'src/app/interfaces/interfaces';
+import { PersonService } from 'src/app/person/person.service';
 import { BookService } from '../book.service';
+
+interface PersonResponse {
+  allPeople: Person[]
+}
 
 @Component({
   selector: 'app-book-form',
@@ -13,17 +18,28 @@ export class BookFormComponent {
   id: number = 0;
   editMode = false;
   bookForm!: FormGroup;
+  people: Person[] = [];
+  selectedPersonId!: number;
 
   constructor(private route: ActivatedRoute,
     private bookService: BookService,
+    private personService: PersonService,
     private router: Router) { 
       this.initForm();
-    }
+  }
   
     ngOnInit(): void {
       this.route.params.subscribe((params: Params) => {
         this.id = +params['id'];
         this.editMode = params['id'] != null;
+        const req = this.personService.getPeople();
+
+        req.subscribe((val: PersonResponse) => {
+        //console.log(val)
+        //return val.allPeople;
+          this.people = val.allPeople;
+        })
+
         this.initForm();
       });
     }
@@ -33,11 +49,12 @@ export class BookFormComponent {
     let bookAuthorId = -1;
     let bookDate = "2022-02-02";
     let bookCover = "";
+    
 
     if(!this.editMode){
       this.bookForm = new FormGroup({
         'title': new FormControl(bookTitle, Validators.required),
-        'authorId': new FormControl(bookAuthorId, Validators.required),
+        'authorid': new FormControl(bookAuthorId, Validators.required),
         'publicationdate': new FormControl(bookDate.slice(0,10), Validators.required),
         'book_cover': new FormControl(bookCover),
       })
@@ -59,7 +76,7 @@ export class BookFormComponent {
 
       this.bookForm = new FormGroup({
         'title': new FormControl(bookTitle, Validators.required),
-        'authorId': new FormControl(bookAuthorId, Validators.required),
+        'authorid': new FormControl(bookAuthorId, Validators.required),
         'publicationdate': new FormControl(bookDate.slice(0,10), Validators.required),
         'book_cover': new FormControl(bookCover),
       })

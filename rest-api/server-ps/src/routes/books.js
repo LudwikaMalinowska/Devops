@@ -23,10 +23,12 @@ app.post("/", async (req, res) => {
 	}
 	const query = {
 		text: "INSERT INTO book (title, authorId, publicationDate, book_cover) VALUES ($1,$2,$3,$4);",
-		values: [req.body.title, req.body.authorId, req.body.publicationdate, req.body.book_cover],
+		values: [req.body.title, req.body.authorid, req.body.publicationdate, req.body.book_cover],
 	}
 	client.query(query, (error, result) => {
 		if (error) console.log(error)
+		// console.log("result", result)
+
 		return res.send(message)
 	})
 })
@@ -90,6 +92,8 @@ app.put("/:id", async (req, res) => {
 		values: [id, data.title, data.authorId, data.publicationdate, data.book_cover],
 	}
 	client.query(query, (error, response) => {
+		if (error) console.log(error)
+
 		return res.send({
 			updatedbookId: id,
 			data,

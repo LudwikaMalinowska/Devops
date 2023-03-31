@@ -1,10 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { Person } from '../interfaces/interfaces';
 
 interface PersonResponse {
   allPeople: Person[]
+}
+interface DeletePersonRes {
+  deletedPerson?: Person;
+  err?: any;
+  detail?: string;
 }
 
 @Injectable({
@@ -36,13 +41,15 @@ export class PersonService {
 
   private persons: Person[] = [];
 
-  getPeople() {
+  getPeople(): Observable<PersonResponse> {
       const req: Observable<PersonResponse> = this.http.get<PersonResponse>("http://localhost:5000/api/people")
 
-      req.subscribe((val: PersonResponse) => {
-        console.log(val)
-        return val.allPeople;
-      })
+      // req.subscribe((val: PersonResponse) => {
+      //   console.log(val)
+      //   return val.allPeople;
+      // })
+
+      return req;
   }
 
 
@@ -66,11 +73,23 @@ export class PersonService {
   }
 
   deletePerson(index: number){
-    const req: Observable<PersonResponse> = this.http.delete<PersonResponse>("http://localhost:5000/api/people/"+index)
+    const req: Observable<DeletePersonRes> = this.http.delete<DeletePersonRes>("http://localhost:5000/api/people/"+index)
+    // .pipe(tap(
+    //   {
+    //     error: (error) => console.log(error)
+    //   }
+    // ))
 
-    req.subscribe((val) => {
-      console.log(val)
-      return val;
+    req.subscribe((val: DeletePersonRes) => {
+      // console.log("vvv", val)
+      if (val.err){
+        // throw new Error(val.detail);
+        alert(val.detail)
+        return;
+        
+      } 
+      else
+        return val;
     })
   }
 }

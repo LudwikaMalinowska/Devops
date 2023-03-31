@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Person } from 'src/app/interfaces/interfaces';
+import { PersonService } from '../person.service';
 
 @Component({
   selector: 'app-person-page',
@@ -13,7 +14,12 @@ export class PersonPageComponent {
   person: Person | undefined;
   state: any;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    private activatedRoute: ActivatedRoute,
+    private personService: PersonService
+  ) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
   }
 
@@ -37,5 +43,12 @@ export class PersonPageComponent {
 
   parseDate(date: String | undefined) {
     return date?.slice(0, 10);
+  }
+
+  deletePerson(){
+    if (this.person?.id){
+      this.personService.deletePerson(this.person.id);
+      this.router.navigate(['/people']);
+    }
   }
 }
