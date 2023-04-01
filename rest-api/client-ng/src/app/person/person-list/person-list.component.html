@@ -14,8 +14,10 @@
             <option value="sort_descending_surname">Descending - surname</option>
         </select>
     </div>
+    <label for="search">Filter: </label>
+    <input type="text" name="search" [(ngModel)]="search_text"/>
 </div>
 
 <ul>
-    <app-person-list-item *ngFor="let person of people" [person]="person"></app-person-list-item>
+    <app-person-list-item *ngFor="let person of visiblePeople | personFilterPipe: search_text" [person]="person"></app-person-list-item>
 </ul>

@@ -15,24 +15,29 @@ interface Response {
 })
 export class PersonListComponent {
   people: Person[] = []
+  visiblePeople: Person[] = [];
   sortForm!: FormGroup;
+  search_text: string = "";
 
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     let sort_type = "";
+    // let search_text = "";
 
     const req: Observable<Response> = this.http.get<Response>("http://localhost:5000/api/people")
     req.subscribe((val: Response) => {
       console.log(val.allPeople);
       if (val.allPeople.length > 0) {
         this.people = val.allPeople;
+        this.visiblePeople = val.allPeople;
       }
     })
 
     this.sortForm = new FormGroup({
       'sort_type': new FormControl(sort_type),
+      // 'search': new FormControl(search_text),
     })
     
   }
@@ -56,6 +61,7 @@ export class PersonListComponent {
     }
     
   }
+  
 }
 
 

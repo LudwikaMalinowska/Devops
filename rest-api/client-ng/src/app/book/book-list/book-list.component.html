@@ -12,8 +12,10 @@
             <option value="sort_descending_title">Descending - title</option>
         </select>
     </div>
+    <label for="search">Filter: </label>
+    <input type="text" [(ngModel)]="search_text" name="search"/>
 </div>
 
 <ul>
-    <app-book-list-item *ngFor="let book of books" [book]="book"></app-book-list-item>
+    <app-book-list-item *ngFor="let book of visibleBooks | bookFilterPipe: search_text" [book]="book"></app-book-list-item>
 </ul>

@@ -16,6 +16,8 @@ import { PersonListItemComponent } from './person/person-list-item/person-list-i
 import { PersonPageComponent } from './person/person-page/person-page.component';
 import { PersonFormComponent } from './person/person-form/person-form.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
+import { BookFilterPipe } from './pipes/book-filter-pipe.pipe';
+import { PersonFilterPipe } from './pipes/person-filter-pipe.pipe';
 // import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
@@ -31,7 +33,9 @@ import { BookFormComponent } from './book/book-form/book-form.component';
     PersonListItemComponent,
     PersonPageComponent,
     PersonFormComponent,
-    BookFormComponent
+    BookFormComponent,
+    BookFilterPipe,
+    PersonFilterPipe
   ],
   imports: [
     BrowserModule,

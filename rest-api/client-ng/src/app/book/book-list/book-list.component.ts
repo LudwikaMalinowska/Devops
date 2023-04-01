@@ -17,26 +17,28 @@ interface Response {
 })
 export class BookListComponent {
   books: Book[] = [];
+  visibleBooks: Book[] = [];
   sortForm!: FormGroup;
+  search_text: string = "";
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     let sort_type = "";
-    
+    // let search_text = "";
+
     const req: Observable<Response> = this.http.get<Response>("http://localhost:5000/api/books")
     req.subscribe((val: Response) => {
       console.log(val)
       if (val.allBooks.length > 0) {
         this.books = val.allBooks;
+        this.visibleBooks = val.allBooks;
       }
-      // else {
-      //   this.books = books;
-      // }
     });
 
     this.sortForm = new FormGroup({
       'sort_type': new FormControl(sort_type),
+      // 'search': new FormControl(search_text),
     })
   }
 
